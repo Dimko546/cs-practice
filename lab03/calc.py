@@ -7,5 +7,3 @@ elif z == '-':
     print(f-s)
 elif z == '*':
     print(f*s)
-elif z == '/':
-    print(f/s)
