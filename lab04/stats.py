@@ -13,3 +13,14 @@ def parse_record(line: str) -> dict:
     except ValueError:
         raise ValueError('Температура не является числом')
     return {'city': city.strip(), 'temp': temp, 'date': date.strip()}
+
+
+def read_valid(lines: list[str]) -> tuple[list[dict], int]:
+    valid = []
+    skipped = 0
+    for line in lines:
+        try:
+            valid.append(parse_record(line))
+        except ValueError:
+            skipped += 1
+    return valid, skipped
