@@ -24,3 +24,14 @@ def read_valid(lines: list[str]) -> tuple[list[dict], int]:
         except ValueError:
             skipped += 1
     return valid, skipped
+
+
+def average_by_city(records: list[dict]) -> dict:
+    total = {}
+    count = {}
+    for r in records:
+        c = r['city']
+        t = r['temp']
+        total[c] = total.get(c, 0.0) + t
+        count[c] = count.get(c, 0) + 1
+    return {c: round(total[c] / count[c], 1) for c in total}
